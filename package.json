@@ -1,7 +1,7 @@
 {
-  "name": "searchableSelect",
-  "version": "0.1.0",
-  "description": "Change plain select box to \"select2\" style select box",
+  "name": "SearchableSelect",
+  "version": "1.0.0",
+  "description": "SearchableSelect gives you a customizable select box with support for searching",
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
