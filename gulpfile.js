@@ -30,7 +30,7 @@ gulp.task('xpi', ['copy'], () => {
 });
 
 gulp.task('copy', ['webpack'], () => {
-  return gulp.src(['build/background.js', 'src/firefox/manifest.json', 'src/css/select2.css'])
+  return gulp.src(['build/background.js', 'src/firefox/manifest.json', 'src/css/select2.min.css'])
       .pipe(gulp.dest('dist'));
 });
 

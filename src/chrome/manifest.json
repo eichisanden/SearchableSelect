@@ -12,7 +12,7 @@
     {
       "matches": ["*://*/*"],
       "js": ["bundle.js"],
-      "css": ["select2.css"]
+      "css": ["select2.min.css"]
     }
   ],
   "permissions": [
