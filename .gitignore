@@ -1,8 +1,8 @@
 node_modules
 build
 dist
-xpi
+package
 .idea
 .DS_Store
 .eslintrc.json
-
+*.pem

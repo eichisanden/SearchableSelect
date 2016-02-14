@@ -4,15 +4,33 @@ const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const webpack = require('gulp-webpack');
 const del = require('del');
+const crx = require('gulp-crx-pack');
+const fs = require('fs');
 
-gulp.task('zip', ['copy'], () => {
+// Packaging for Chrome.
+gulp.task('crx', ['copy2'], () => {
+  return gulp.src('dist')
+    .pipe(crx({
+      privateKey: fs.readFileSync('./src/chrome/SearchableSelect.pem', 'utf8'),
+      filename: 'searchableSelect.crx'
+    }))
+    .pipe(gulp.dest('package'));
+});
+
+gulp.task('copy2', ['xpi'], () => {
+  return gulp.src(['src/chrome/manifest.json'])
+      .pipe(gulp.dest('dist'));
+});
+
+// Packaging for Firefox.
+gulp.task('xpi', ['copy'], () => {
   return gulp.src('dist/*')
       .pipe(zip('searchableSelect.xpi'))
-      .pipe(gulp.dest('xpi'));
+      .pipe(gulp.dest('package'));
 });
 
 gulp.task('copy', ['webpack'], () => {
-  return gulp.src(['build/background.js', 'src/manifest.json', 'src/css/select2.css'])
+  return gulp.src(['build/background.js', 'src/firefox/manifest.json', 'src/css/select2.css'])
       .pipe(gulp.dest('dist'));
 });
 
@@ -40,9 +58,9 @@ gulp.task('babel', ['clean'], () => {
 });
 
 gulp.task('clean', () => {
-  del(['build', 'dist', 'xpi'], (err, deletedFiles) => {
+  del(['build', 'dist', 'package'], (err, deletedFiles) => {
     console.log('Files deleted:', deletedFiles.join(', '));
   });
 });
 
-gulp.task('default', ['zip']);
+gulp.task('default', ['crx']);

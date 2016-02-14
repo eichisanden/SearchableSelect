@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Searchable Select",
+  "version": "0.1.0",
+  "browser_action": {
+    "default_title": "Searchable Select"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["bundle.js"],
+      "css": ["select2.css"]
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}

@@ -1,6 +1,5 @@
 # SearchableSelect
 
-Web Extension for Firefox.
-Force change all select box to `select2` style.
+This is Web Extension for Firefox and Chrome(blink).
+SearchableSelect gives you a customizable select box with support for searching.
 This Can't restore original style.
-
